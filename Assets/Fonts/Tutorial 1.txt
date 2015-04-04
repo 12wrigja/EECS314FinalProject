@@ -1,0 +1,13 @@
+Welcome to Pipeline Bakery!
+Our job is to feed the very hungry processor.
+He likes instructions.
+To make the processor happy, we have to feed him instruction sets without hazards.
+Let's start simple.
+
+This is an arithmetic instruction.
+It has five parts:
+MEM, the initial memory read.
+REG, where the processor selects what register to operate on.
+ALU, where the processor's arithmetic logic unit performs mathematical operations.
+MEM, where the memory is written to after operations.
+REG,  where the processor writes the result to a register after operations.
