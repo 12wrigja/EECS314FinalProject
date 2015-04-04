@@ -27,6 +27,7 @@ GameObject:
   - 224: {fileID: 22406464}
   - 114: {fileID: 11449062}
   - 114: {fileID: 11444154}
+  - 114: {fileID: 11477312}
   m_Layer: 5
   m_Name: CodeLine
   m_TagString: Untagged
@@ -402,6 +403,19 @@ MonoBehaviour:
   m_PreferredHeight: -1
   m_FlexibleWidth: 1
   m_FlexibleHeight: -1
+--- !u!114 &11477312
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41bb0956d5a5785408130b8c80f47228, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: {fileID: 0}
+  code: 0
 --- !u!114 &11481494
 MonoBehaviour:
   m_ObjectHideFlags: 1

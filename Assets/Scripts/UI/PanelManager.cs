@@ -6,7 +6,7 @@ public class PanelManager : MonoBehaviour {
     protected Animator anim;
 
 	// Use this for initialization
-	void Start () {
+	protected void Start () {
         anim = GetComponent<Animator>();
 	}
 

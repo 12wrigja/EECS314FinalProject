@@ -10,6 +10,7 @@ public class MatchSetup : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         opcodepanel.SetAvailableOpCodes(validOpCodes.ToArray());
+        opcodepanel.RefreshPanel();
 	}
 	
 	// Update is called once per frame

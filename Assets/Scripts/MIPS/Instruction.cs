@@ -5,8 +5,6 @@ using System.Collections;
 [ExecuteInEditMode]
 public class Instruction : MonoBehaviour {
 
-    public Text name;
-
     public enum OPCODE
     {
         ADD,
@@ -41,11 +39,4 @@ public class Instruction : MonoBehaviour {
         this.code = newCode;
     }
 
-    void Update()
-    {
-        if (this.name != null)
-        {
-            name.text = code.ToString();
-        }
-    }
 }

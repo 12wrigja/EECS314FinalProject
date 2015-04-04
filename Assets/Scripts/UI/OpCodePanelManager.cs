@@ -12,7 +12,9 @@ public class OpCodePanelManager : PanelManager {
 
     void Start()
     {
-        anim = GetComponent<Animator>();
+        base.Start();
+        panel = GetComponentInChildren<GridLayoutGroup>();
+        Debug.Log(panel.name);
     }
 
     public void SetAvailableOpCodes(params Instruction.OPCODE[] codes)
@@ -23,8 +25,9 @@ public class OpCodePanelManager : PanelManager {
     public void RefreshPanel()
     {
         //Remove all old children
-        Transform[] t = panel.gameObject.GetComponentsInChildren<Transform>();
-        for (int i = t.Length; i >= 0; i++)
+        InstructionButton[] t = panel.gameObject.GetComponentsInChildren<InstructionButton>();
+        Debug.Log("Removing " + t.Length + " old opcodes.");
+        for (int i = t.Length-1; i >= 0; i--)
         {
             //Destroy the extras
             Destroy(t[i].gameObject);
@@ -34,8 +37,9 @@ public class OpCodePanelManager : PanelManager {
         foreach (Instruction.OPCODE code in allowedOpCodes)
         {
             GameObject g = Instantiate(InstructionButtonPrefab) as GameObject;
-            Instruction i = g.GetComponent<Instruction>();
-            i.SetOpCode(code);
+            ((RectTransform)g.transform).SetParent(panel.transform);
+            InstructionButton i = g.GetComponent<InstructionButton>();
+            i.opcode = code;
         }
     }
 }
