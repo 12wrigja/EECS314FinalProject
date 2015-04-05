@@ -2,22 +2,23 @@
 using UnityEngine.UI;
 using System.Collections;
 
+[ExecuteInEditMode]
 public class InstructionButton : MonoBehaviour {
 
-    public Instruction.OPCODE opcode;
+    public OpcodeRepository.OPCODE code;
     public Text instructionNameText;
 
 	// Use this for initialization
 	void Start () {
         Button btn = GetComponent<Button>();
-        btn.onClick.AddListener(() => CodeAreaManager.addInstructionLine(opcode));
+        btn.onClick.AddListener(() => CodeAreaManager.addInstructionLine(code));
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (instructionNameText != null && opcode != null)
+        if (instructionNameText != null && code != null)
         {
-            instructionNameText.text = opcode.ToString();
+            instructionNameText.text = code.ToString();
         }
 	}
 }

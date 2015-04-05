@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Register : Operand {
 
-    enum REGISTERS
+    public enum REGISTERS
     {
         ZERO,
         A0,
@@ -22,4 +22,10 @@ public class Register : Operand {
         V1
     }
 
+    public REGISTERS reg;
+
+    public override string toString()
+    {
+        return reg.ToString();
+    }
 }

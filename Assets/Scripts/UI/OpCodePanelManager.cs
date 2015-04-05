@@ -7,17 +7,18 @@ public class OpCodePanelManager : PanelManager {
 
     public GameObject InstructionButtonPrefab;
 
-    private Instruction.OPCODE[] allowedOpCodes;
+    private OpcodeRepository.OPCODE[] allowedOpCodes;
     private GridLayoutGroup panel;
 
-    void Start()
+    new void Start()
     {
         base.Start();
         panel = GetComponentInChildren<GridLayoutGroup>();
+        RefreshPanel();
         Debug.Log(panel.name);
     }
 
-    public void SetAvailableOpCodes(params Instruction.OPCODE[] codes)
+    public void SetAvailableOpCodes(params OpcodeRepository.OPCODE[] codes)
     {
         this.allowedOpCodes = codes;
     }
@@ -34,12 +35,12 @@ public class OpCodePanelManager : PanelManager {
         }
 
         //Create new children
-        foreach (Instruction.OPCODE code in allowedOpCodes)
+        foreach (OpcodeRepository.OPCODE code in allowedOpCodes)
         {
             GameObject g = Instantiate(InstructionButtonPrefab) as GameObject;
             ((RectTransform)g.transform).SetParent(panel.transform);
             InstructionButton i = g.GetComponent<InstructionButton>();
-            i.opcode = code;
+            i.code = code;
         }
     }
 }

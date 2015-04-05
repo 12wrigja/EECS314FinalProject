@@ -22,7 +22,7 @@ public class CodeAreaManager : MonoBehaviour {
         }
     }
 
-    public static void addInstructionLine(Instruction.OPCODE opcode)
+    public static void addInstructionLine(OpcodeRepository.OPCODE opcode)
     {
         if (instance == null)
         {
@@ -31,8 +31,8 @@ public class CodeAreaManager : MonoBehaviour {
         }
         GameObject newLine = Instantiate(instance.instructionLinePrefab) as GameObject;
         ((RectTransform)newLine.transform).SetParent(instance.codeList.transform);
-        Instruction i = newLine.GetComponent<Instruction>();
-        i.SetOpCode(opcode);
+        CodeLine c = newLine.GetComponent<CodeLine>();
+        c.setInstruction(opcode);
     }
 
 }
