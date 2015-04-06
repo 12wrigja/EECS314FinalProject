@@ -33,6 +33,7 @@ public class CodeAreaManager : MonoBehaviour {
         ((RectTransform)newLine.transform).SetParent(instance.codeList.transform);
         CodeLine c = newLine.GetComponent<CodeLine>();
         c.setInstruction(opcode);
+        c.lineAdjustButton.onClick.AddListener(() => LineAdjuster.ShowAdjusterForLine(c));
     }
 
 }

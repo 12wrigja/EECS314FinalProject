@@ -10,36 +10,63 @@ public class CodeLine : MonoBehaviour {
     public Text op2Text;
     public Text op3Text;
 
-
+    public Button lineAdjustButton;
+    public Button labelButton;
+    public Button instructionButton;
+    public Button op1Button;
+    public Button op2Button;
+    public Button op3Button;
 
     private string label;
     private Instruction instr;
+
+    private bool lockedToTouch = false;
 
     void Awake()
     {
         instr = gameObject.GetComponent<Instruction>();
     }
 
-    void Update()
+    void Start()
     {
 
+    }
+
+    void Update()
+    {
+        if (lockedToTouch)
+        {
+            MoveLine();
+        }
     }
 
     public void MoveLine()
     {
         if (Input.touchCount > 1 && Input.touches[0].phase == TouchPhase.Moved)
         {
-            Debug.Log("Being Relocated on screen.");
+            Touch t = Input.GetTouch(0);
         }
+        else if (Input.GetMouseButton(1) || Input.GetMouseButton(2) || Input.GetMouseButton(3))
+        {
+            Debug.Log(Input.mousePosition);
+            transform.position = Input.mousePosition;
+        }
+        else
+        {
+            Debug.Log("No movement pointers defined.");
+        }
+        
     }
 
     public void StartDrag()
     {
+        lockedToTouch = true;
         Debug.Log("Code line drag has started.");
     }
 
     public void StopDrag()
     {
+        lockedToTouch = false;
         Debug.Log("Code line drag has stopped.");
     }
 

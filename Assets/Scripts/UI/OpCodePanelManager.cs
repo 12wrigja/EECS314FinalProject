@@ -21,6 +21,10 @@ public class OpCodePanelManager : PanelManager {
     public void SetAvailableOpCodes(params OpcodeRepository.OPCODE[] codes)
     {
         this.allowedOpCodes = codes;
+        if (panel != null)
+        {
+            RefreshPanel();
+        }
     }
 
     public void RefreshPanel()
@@ -35,6 +39,10 @@ public class OpCodePanelManager : PanelManager {
         }
 
         //Create new children
+        if (allowedOpCodes == null)
+        {
+            return;
+        }
         foreach (OpcodeRepository.OPCODE code in allowedOpCodes)
         {
             GameObject g = Instantiate(InstructionButtonPrefab) as GameObject;
