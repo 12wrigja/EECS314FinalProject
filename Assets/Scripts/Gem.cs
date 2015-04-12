@@ -2,8 +2,12 @@
 using System.Collections;
 
 public class Gem : MonoBehaviour {
+	
+	public Manager man;
 
-	public Gem up, down, left, right;
+	void Start(){
+		man = GameObject.FindWithTag ("Manager").GetComponent<Manager> () as Manager;
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -12,5 +16,9 @@ public class Gem : MonoBehaviour {
 
 	public bool sameType(Gem other){
 		return GetComponent<SpriteRenderer> ().sprite == GetComponent<SpriteRenderer> ().sprite;
+	}
+
+	void OnMouseDown(){
+		man.clicked (this);
 	}
 }
