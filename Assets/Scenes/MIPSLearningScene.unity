@@ -87,13 +87,7 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &311068621
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11413962, guid: c0deb13fbb4468f43931566180951a99,
-    type: 2}
-  m_PrefabInternal: {fileID: 1398070848}
-  m_Script: {fileID: 11500000, guid: fec150f26096eaa4b9463c0e5050a28d, type: 3}
---- !u!1001 &1398070848
+--- !u!1001 &118618218
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -172,17 +166,17 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 22406030, guid: c0deb13fbb4468f43931566180951a99, type: 2}
+    - target: {fileID: 22455104, guid: c0deb13fbb4468f43931566180951a99, type: 2}
       propertyPath: m_SizeDelta.y
-      value: -440.440033
+      value: -435.593445
       objectReference: {fileID: 0}
     - target: {fileID: 22446894, guid: c0deb13fbb4468f43931566180951a99, type: 2}
       propertyPath: m_SizeDelta.y
       value: -440.440033
       objectReference: {fileID: 0}
-    - target: {fileID: 22455104, guid: c0deb13fbb4468f43931566180951a99, type: 2}
+    - target: {fileID: 22426314, guid: c0deb13fbb4468f43931566180951a99, type: 2}
       propertyPath: m_SizeDelta.y
-      value: -435.593445
+      value: -440.440033
       objectReference: {fileID: 0}
     - target: {fileID: 22426280, guid: c0deb13fbb4468f43931566180951a99, type: 2}
       propertyPath: m_SizeDelta.y
@@ -332,13 +326,31 @@ Prefab:
       propertyPath: m_SizeDelta.y
       value: 79.2405396
       objectReference: {fileID: 0}
-    - target: {fileID: 22426314, guid: c0deb13fbb4468f43931566180951a99, type: 2}
+    - target: {fileID: 22406030, guid: c0deb13fbb4468f43931566180951a99, type: 2}
       propertyPath: m_SizeDelta.y
       value: -440.440033
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c0deb13fbb4468f43931566180951a99, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &311068621
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11413962, guid: c0deb13fbb4468f43931566180951a99,
+    type: 2}
+  m_PrefabInternal: {fileID: 118618218}
+  m_Script: {fileID: 11500000, guid: fec150f26096eaa4b9463c0e5050a28d, type: 3}
+--- !u!114 &1102485496
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11405812, guid: c0deb13fbb4468f43931566180951a99,
+    type: 2}
+  m_PrefabInternal: {fileID: 118618218}
+  m_Script: {fileID: 11500000, guid: 28d16fa85f0eed543974806f5206452c, type: 3}
+--- !u!114 &1211762149
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11459470, guid: c0deb13fbb4468f43931566180951a99,
+    type: 2}
+  m_PrefabInternal: {fileID: 118618218}
+  m_Script: {fileID: 11500000, guid: 9b77103963366954ca7bd2ba8411df17, type: 3}
 --- !u!1 &1463455901
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,6 +464,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   validOpCodes: 00000000050000000b000000100000000a00000008000000
   opcodepanel: {fileID: 311068621}
+  allowedRegisters: 00000000010000000d000000
+  registerPanel: {fileID: 1945701401}
+  allowedLabels:
+  - loop
+  - exit
+  labelPanel: {fileID: 1102485496}
+  allowedImmediateValues:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  immediatePanel: {fileID: 1211762149}
 --- !u!4 &1618142406
 Transform:
   m_ObjectHideFlags: 0
@@ -537,3 +562,9 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &1945701401
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11457600, guid: c0deb13fbb4468f43931566180951a99,
+    type: 2}
+  m_PrefabInternal: {fileID: 118618218}
+  m_Script: {fileID: 11500000, guid: 6bb92b223fbf8934b99e573db21bc966, type: 3}

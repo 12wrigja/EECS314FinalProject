@@ -27,49 +27,6 @@ public class CodeLine : MonoBehaviour {
         instr = gameObject.GetComponent<Instruction>();
     }
 
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-        if (lockedToTouch)
-        {
-            MoveLine();
-        }
-    }
-
-    public void MoveLine()
-    {
-        if (Input.touchCount > 1 && Input.touches[0].phase == TouchPhase.Moved)
-        {
-            Touch t = Input.GetTouch(0);
-        }
-        else if (Input.GetMouseButton(1) || Input.GetMouseButton(2) || Input.GetMouseButton(3))
-        {
-            Debug.Log(Input.mousePosition);
-            transform.position = Input.mousePosition;
-        }
-        else
-        {
-            Debug.Log("No movement pointers defined.");
-        }
-        
-    }
-
-    public void StartDrag()
-    {
-        lockedToTouch = true;
-        Debug.Log("Code line drag has started.");
-    }
-
-    public void StopDrag()
-    {
-        lockedToTouch = false;
-        Debug.Log("Code line drag has stopped.");
-    }
-
     public CodeLine SetLabel(string label)
     {
         this.label = label;

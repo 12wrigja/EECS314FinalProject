@@ -8,13 +8,20 @@ public class MatchSetup : MonoBehaviour {
     public OpcodeRepository.OPCODE[] validOpCodes;
     public OpCodePanelManager opcodepanel;
 
+    public Register.REGISTERS[] allowedRegisters;
+    public RegisterPanelManager registerPanel;
+
+    public string[] allowedLabels;
+    public LabelPanelManager labelPanel;
+
+    public string[] allowedImmediateValues;
+    public ImmediatePanelManager immediatePanel;
+
 	// Use this for initialization
 	void Start () {
         opcodepanel.SetAvailableOpCodes(validOpCodes);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+        registerPanel.SetAvailableRegisters(allowedRegisters);
+        immediatePanel.SetAvailableImmediates(allowedImmediateValues);
+        labelPanel.SetAvailableLabels(allowedLabels);
 	}
 }
