@@ -20,8 +20,6 @@ public class CodeLine : MonoBehaviour {
     private string label;
     private Instruction instr;
 
-    private bool lockedToTouch = false;
-
     void Awake()
     {
         instr = gameObject.GetComponent<Instruction>();
@@ -45,9 +43,15 @@ public class CodeLine : MonoBehaviour {
             instrText.text = code.ToString();
         }
         lineAdjustButton.onClick.AddListener(() => LineAdjuster.ShowAdjusterForLine(this));
+
+        //Need to add in logic to register the appropriate values in the right places here based off of instruction name.
+
         RegisterPanelManager.RegisterAsRegisterSlot(this,op1Button,op1Text,1);
         RegisterPanelManager.RegisterAsRegisterSlot(this, op2Button, op2Text, 2);
         RegisterPanelManager.RegisterAsRegisterSlot(this, op3Button, op3Text, 3);
+        ImmediatePanelManager.RegisterAsRegisterSlot(this, op2Button, op2Text, 2);
+        ImmediatePanelManager.RegisterAsRegisterSlot(this, op3Button, op3Text, 3);
+        LabelPanelManager.RegisterAsLabelSlot(this, labelButton, labelText);
         return this;
     }
 

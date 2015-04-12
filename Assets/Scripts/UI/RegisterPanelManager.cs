@@ -105,7 +105,10 @@ public class RegisterPanelManager : PanelManager {
     public override void hidePanel()
     {
         base.hidePanel();
-        disableHighlighting(Color.white);
+        if (disableHighlighting != null)
+        {
+            disableHighlighting(Color.white);
+        }
     }
 
     public static void DeregisterAsRegisterSlot(Button regSlot)
