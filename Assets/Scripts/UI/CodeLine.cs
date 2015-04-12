@@ -37,13 +37,17 @@ public class CodeLine : MonoBehaviour {
         return this;
     }
 
-    public CodeLine setInstruction(OpcodeRepository.OPCODE code)
+    public CodeLine setupLine(OpcodeRepository.OPCODE code)
     {
         instr.code = code;
         if (instrText != null)
         {
             instrText.text = code.ToString();
         }
+        lineAdjustButton.onClick.AddListener(() => LineAdjuster.ShowAdjusterForLine(this));
+        RegisterPanelManager.RegisterAsRegisterSlot(this,op1Button,op1Text,1);
+        RegisterPanelManager.RegisterAsRegisterSlot(this, op2Button, op2Text, 2);
+        RegisterPanelManager.RegisterAsRegisterSlot(this, op3Button, op3Text, 3);
         return this;
     }
 

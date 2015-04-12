@@ -8,11 +8,12 @@ public class PlaceableButton : MonoBehaviour
 
     public string fillText;
     public Text fillTextDisplay;
+    public Button btn;
 
     // Use this for initialization
     void Start()
     {
-        Button btn = GetComponent<Button>();
+        btn = GetComponent<Button>();
     }
 
     // Update is called once per frame

@@ -148,6 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fillText: 
   fillTextDisplay: {fileID: 11477238}
+  btn: {fileID: 11466240}
 --- !u!222 &22262638
 CanvasRenderer:
   m_ObjectHideFlags: 1

@@ -24,8 +24,13 @@ public class Register : Operand {
 
     public REGISTERS reg;
 
+    public Register(REGISTERS reg)
+    {
+        this.reg = reg;
+    }
+
     public override string toString()
     {
-        return reg.ToString();
+        return "$"+reg.ToString();
     }
 }

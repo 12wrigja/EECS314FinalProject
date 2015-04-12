@@ -10,12 +10,12 @@ public class PanelManager : MonoBehaviour {
         anim = GetComponent<Animator>();
 	}
 
-    public void showPanel()
+    public virtual void showPanel()
     {
         anim.SetTrigger("SlideInTrigger");
     }
 
-    public void hidePanel()
+    public virtual void hidePanel()
     {
         anim.SetTrigger("SlideOutTrigger");
     }

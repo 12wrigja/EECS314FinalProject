@@ -32,8 +32,7 @@ public class CodeAreaManager : MonoBehaviour {
         GameObject newLine = Instantiate(instance.instructionLinePrefab) as GameObject;
         ((RectTransform)newLine.transform).SetParent(instance.codeList.transform);
         CodeLine c = newLine.GetComponent<CodeLine>();
-        c.setInstruction(opcode);
-        c.lineAdjustButton.onClick.AddListener(() => LineAdjuster.ShowAdjusterForLine(c));
+        c.setupLine(opcode);
     }
 
 }
