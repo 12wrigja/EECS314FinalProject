@@ -112,6 +112,10 @@ public class RegisterPanelManager : PanelManager {
 
     public static void DeregisterAsRegisterSlot(Button regSlot)
     {
+        if (!instance.buttonToDelegateMap.ContainsKey(regSlot))
+        {
+            return;
+        }
         HighlightAsRegisterSlot temp = instance.buttonToDelegateMap[regSlot];
         if (temp != null)
         {

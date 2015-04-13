@@ -24,7 +24,8 @@ public class LineAdjuster : MonoBehaviour {
         backgroundClickContainer.GetComponent<Button>().onClick.AddListener(() => HideAdjuster());
         lineUpButton.onClick.AddListener(() => ShiftLineUp(currentLine));
         lineDownButton.onClick.AddListener(() => ShiftLineDown(currentLine));
-        lineDeleteButton.onClick.AddListener(() => DeleteCodeLine(currentLine));
+        lineDeleteButton.onClick.AddListener(() => PromptDeleteCurrentCodeLine());
+        instance.confirmDialogObj.AddConfirmListener(() => DeleteCurrentCodeLine());
     }
 
     void Update()
@@ -60,18 +61,19 @@ public class LineAdjuster : MonoBehaviour {
         ((RectTransform)line.gameObject.transform).SetSiblingIndex(index);
     }
 
-    private static void DeleteCodeLine(CodeLine line)
+    private static void PromptDeleteCurrentCodeLine()
     {
         instance.confirmDialogObj.contentText.text = "Do you want to delete this line?";
-        instance.confirmDialogObj.AddConfirmListener(() =>
-        {
-            line.cleanup();
-            Destroy(line.gameObject);
-            HideAdjuster();
-        });
         instance.confirmDialogObj.showPanel();
     }
 
+    private static void DeleteCurrentCodeLine()
+    {
+        instance.currentLine.cleanup();
+        Destroy(instance.currentLine.gameObject);
+        instance.confirmDialogObj.hidePanel();
+        HideAdjuster();
+    }
     private static void ShiftLineDown(CodeLine line)
     {
         int index = ((RectTransform)line.gameObject.transform).GetSiblingIndex();

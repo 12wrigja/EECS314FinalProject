@@ -32,6 +32,16 @@ public class ConfirmDialog : PanelManager {
         cancellListener += c;
     }
 
+    public void RemoveConfirmListener(actionConfirmed c)
+    {
+        confirmListener -= c;
+    }
+
+    public void RemoveCancelListener(actionCancelled c)
+    {
+        cancellListener -= c;
+    }
+
     private void onActionConfirmed()
     {
         hidePanel();
