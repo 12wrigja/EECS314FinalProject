@@ -1350,6 +1350,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlaceableButtonPrefab: {fileID: 113842, guid: 824c5ccec5ad93b4fb7d8ff2e3627de3,
     type: 2}
+  panelHideButton: {fileID: 11451872}
 --- !u!114 &11406560
 MonoBehaviour:
   m_ObjectHideFlags: 1

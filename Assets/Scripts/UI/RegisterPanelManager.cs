@@ -14,7 +14,6 @@ public class RegisterPanelManager : PanelManager {
     private RemoveHighlighting disableHighlighting;
     private Dictionary<Button, HighlightAsRegisterSlot> buttonToDelegateMap;
 
-
     private Register.REGISTERS[] allowedRegisters;
     private GridLayoutGroup panel;
 
@@ -79,13 +78,13 @@ public class RegisterPanelManager : PanelManager {
                 Register r = new Register(reg);
                 switch (operandNumber)
                 {
-                    case 1:
+                    case 0:
                         line.setOperand1(r);
                         break;
-                    case 2:
+                    case 1:
                         line.setOperand2(r);
                         break;
-                    case 3:
+                    case 2:
                         line.setOperand3(r);
                         break;
                     default:

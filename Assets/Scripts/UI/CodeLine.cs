@@ -44,15 +44,91 @@ public class CodeLine : MonoBehaviour {
         }
         lineAdjustButton.onClick.AddListener(() => LineAdjuster.ShowAdjusterForLine(this));
 
-        //Need to add in logic to register the appropriate values in the right places here based off of instruction name.
+        //Register each of the operands to their appropriate listeners.
+        for (int i = 0; i < 3; i++)
+        {
+            if (OpcodeRepository.indexUnused(code, i))
+            {
+                disableOperandText(i);
+                continue;
+            }
+            if (OpcodeRepository.canPlaceRegister(code, i))
+            {
+                RegisterPanelManager.RegisterAsRegisterSlot(this, getButtonForOperandIndex(i), getTextForOperandIndex(i), i);
+                getTextForOperandIndex(i).text = "register";
+            }
+            if (OpcodeRepository.canPlaceImmediate(code, i))
+            {
+                ImmediatePanelManager.RegisterAsRegisterSlot(this, getButtonForOperandIndex(i), getTextForOperandIndex(i), i);
+                getTextForOperandIndex(i).text = "immediate";
+            }
+            if (OpcodeRepository.canPlaceLabel(code, i))
+            {
+                LabelPanelManager.RegisterAsLabelSlot(this, getButtonForOperandIndex(i), getTextForOperandIndex(i), i);
+                getTextForOperandIndex(i).text = "label";
+            }
 
-        RegisterPanelManager.RegisterAsRegisterSlot(this,op1Button,op1Text,1);
-        RegisterPanelManager.RegisterAsRegisterSlot(this, op2Button, op2Text, 2);
-        RegisterPanelManager.RegisterAsRegisterSlot(this, op3Button, op3Text, 3);
-        ImmediatePanelManager.RegisterAsRegisterSlot(this, op2Button, op2Text, 2);
-        ImmediatePanelManager.RegisterAsRegisterSlot(this, op3Button, op3Text, 3);
+            //TOOD add in the ability to place memory locations
+        }
         LabelPanelManager.RegisterAsLabelSlot(this, labelButton, labelText);
         return this;
+    }
+
+    public void cleanup()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            Button opBtn = getButtonForOperandIndex(i);
+            RegisterPanelManager.DeregisterAsRegisterSlot(opBtn);
+            LabelPanelManager.DeregisterAsLabelSlot(opBtn);
+            ImmediatePanelManager.DeregisterAsImmediateSlot(opBtn);
+        }
+    }
+
+    private Text getTextForOperandIndex(int i){
+        switch(i){
+            case 0:
+                return op1Text;
+            case 1:
+                return op2Text;
+            case 2:
+                return op3Text;
+            default: return null;
+        }
+    }
+
+    private Button getButtonForOperandIndex(int i)
+    {
+        switch (i)
+        {
+            case 0:
+                return op1Button;
+            case 1:
+                return op2Button;
+            case 2:
+                return op3Button;
+            default: 
+                return null;
+        }
+    }
+
+    private void disableOperandText(int i){
+        switch(i){
+            case 0:
+                op1Button.enabled = false;
+                op1Text.color = new Color(op1Text.color.r, op1Text.color.g, op1Text.color.b, 0);
+                break;
+            case 1:
+                op2Button.enabled = false;
+                op2Text.color = new Color(op2Text.color.r, op2Text.color.g, op2Text.color.b, 0);
+                break;
+            case 2:
+                op3Button.enabled = false;
+                op3Text.color = new Color(op3Text.color.r, op3Text.color.g, op3Text.color.b, 0);
+                break;
+            default: 
+                break;
+        }
     }
 
     public CodeLine setOperand1(Operand op)

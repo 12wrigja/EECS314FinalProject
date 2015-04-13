@@ -77,13 +77,13 @@ public class ImmediatePanelManager : PanelManager
             {
                 switch (operandNumber)
                 {
-                    case 1:
+                    case 0:
                         line.setOperand1(imm);
                         break;
-                    case 2:
+                    case 1:
                         line.setOperand2(imm);
                         break;
-                    case 3:
+                    case 2:
                         line.setOperand3(imm);
                         break;
                     default:
@@ -110,9 +110,13 @@ public class ImmediatePanelManager : PanelManager
 
     }
 
-    public static void DeregisterAsRegisterSlot(Button regSlot)
+    public static void DeregisterAsImmediateSlot(Button immSlot)
     {
-        HighlightAsImmediateSlot temp = instance.buttonToDelegateMap[regSlot];
+        if (!instance.buttonToDelegateMap.ContainsKey(immSlot))
+        {
+            return;
+        }
+        HighlightAsImmediateSlot temp = instance.buttonToDelegateMap[immSlot];
         if (temp != null)
         {
             instance.immediateSlotHighlighter -= temp;

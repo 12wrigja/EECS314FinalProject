@@ -71,6 +71,40 @@ public class LabelPanelManager : PanelManager
         });
     }
 
+    public static void RegisterAsLabelSlot(CodeLine line, Button labelSlot, Text labelText, int operandIndex)
+    {
+        HighlightAsLabelSlot temp = (string label, Color c) =>
+        {
+            labelText.color = c;
+            labelSlot.onClick.AddListener(() =>
+            {
+                Label r = new Label(label);
+                switch (operandIndex)
+                {
+                    case 0:
+                        line.setOperand1(r);
+                        break;
+                    case 1:
+                        line.setOperand2(r);
+                        break;
+                    case 2:
+                        line.setOperand3(r);
+                        break;
+                    default:
+                        break;
+                }
+                LabelPanelManager.ClearLabelHighlighting();
+            });
+        };
+        instance.buttonToDelegateMap.Add(labelSlot, temp);
+        instance.registerSlotHighlighter += temp;
+        instance.disableHighlighting += (Color n) =>
+        {
+            labelSlot.onClick.RemoveAllListeners();
+            labelText.color = n;
+        };
+    }
+
     public static void RegisterAsLabelSlot(CodeLine line, Button labelSlot, Text labelText)
     {
         HighlightAsLabelSlot temp = (string label, Color c) =>
@@ -91,9 +125,13 @@ public class LabelPanelManager : PanelManager
         };
     }
 
-    public static void DeregisterAsRegisterSlot(Button regSlot)
+    public static void DeregisterAsLabelSlot(Button lblSlot)
     {
-        HighlightAsLabelSlot temp = instance.buttonToDelegateMap[regSlot];
+        if (!instance.buttonToDelegateMap.ContainsKey(lblSlot))
+        {
+            return;
+        }
+        HighlightAsLabelSlot temp = instance.buttonToDelegateMap[lblSlot];
         if (temp != null)
         {
             instance.registerSlotHighlighter -= temp;

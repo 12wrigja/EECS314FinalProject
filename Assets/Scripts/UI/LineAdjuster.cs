@@ -65,6 +65,7 @@ public class LineAdjuster : MonoBehaviour {
         instance.confirmDialogObj.contentText.text = "Do you want to delete this line?";
         instance.confirmDialogObj.AddConfirmListener(() =>
         {
+            line.cleanup();
             Destroy(line.gameObject);
             HideAdjuster();
         });
