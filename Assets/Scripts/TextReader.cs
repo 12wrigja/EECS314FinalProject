@@ -9,10 +9,12 @@ public class TextReader : MonoBehaviour {
 	public string scriptAddress;
 
 	public Text tutorialText;
+	public Image[] donutPrefabs;
 	public Image[] donuts;
 
 	public AudioClip buttonClip;
 	public AudioClip donutAppear;
+	public Transform canvas;
 
 	private int numItr = 0;
 	private string nextLine;
@@ -32,10 +34,11 @@ public class TextReader : MonoBehaviour {
 			GetComponent<AudioSource>().PlayOneShot(buttonClip, 2.5f);// Plays beep noise.
 			numItr++;
 		}
-		if (Input.GetKeyDown(KeyCode.Space) && !reader.EndOfStream && numItr >= 5) { // Makes donuts appear on fifth tap.
+		if (Input.GetKeyDown(KeyCode.Space) && !reader.EndOfStream && numItr >= 5 && numItr <= 10) { // Makes donuts appear on fifth tap.
 			nextLine = reader.ReadLine();
 			tutorialText.text = nextLine;
-			donuts[numItr - 5].gameObject.SetActive(true);
+			donuts[numItr - 5] = Instantiate(donutPrefabs[numItr - 5]) as Image;
+			donuts[numItr - 5].transform.SetParent(canvas, false);
 			GetComponent<AudioSource>().PlayOneShot(donutAppear, 0.1f); //Plays donut appear sound for each donut.
 			numItr++;
 		}

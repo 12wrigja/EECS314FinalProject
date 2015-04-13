@@ -4,8 +4,16 @@ He likes instructions.
 To make the processor happy, we have to feed him instruction sets without hazards.
 Let's start simple.
 An arithmetic instruction has five parts:
-MEM, the initial memory read.
-REG, where the processor selects what register to operate on.
-ALU, where the processor's arithmetic logic unit performs mathematical operations.
-MEM, where the memory is written to after operations.
-REG,  where the processor writes the result to a register after operations.
+Fetch (FETCH), the initial memory read.
+Decode (DEC), where the processor selects what register to operate on.
+Execute (EXE), where the processor's arithmetic logic unit performs mathematical operations.
+Memory write (MEM), where the memory is written to after operations.
+Write back (WB),  where the processor writes the result to a register after operations.
+We create sequences of instructions to feed to the processor.
+We assemble the instruction in an order called "pipelining."
+We start by feeding the processor the first part of the first instruction.
+Then, we feed him the second part of the first instruction AND the first part of the second instruction.
+But there's a problem. See this instruction sequence?
+In instruction #3, we try to access a memory location.
+But, if it's the same memory location we write to in MEM in instruction #2...
+we get a hazard.
