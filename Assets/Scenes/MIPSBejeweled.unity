@@ -99,9 +99,10 @@ GameObject:
   - 92: {fileID: 1765796319}
   - 124: {fileID: 1765796318}
   - 81: {fileID: 1765796317}
+  - 114: {fileID: 1765796322}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: MainCamera
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,8 +167,25 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1765796316}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 3.5, y: 3.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &1765796322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1765796316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c166ec0a64be5d740a5b1417e87f895e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gems:
+  - {fileID: 11457276, guid: 7932a7c2374b965428d36cbde39b7d44, type: 2}
+  - {fileID: 11419350, guid: daa5da0384e078a46a3e6695c3e9e4c4, type: 2}
+  - {fileID: 11413996, guid: e3dea86b23321394ea5ada5dc97f6856, type: 2}
+  - {fileID: 11484518, guid: eb494d903e3c8e14f81c121b44ebd76c, type: 2}
+  - {fileID: 11452538, guid: 7caad877d7e23124cb7f21a826452153, type: 2}

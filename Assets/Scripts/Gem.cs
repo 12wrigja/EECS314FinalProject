@@ -4,6 +4,9 @@ using System.Collections;
 public class Gem : MonoBehaviour {
 	
 	public Manager man;
+	public int color;
+	public int x, y;
+	public int reqNumber = 3;
 
 	void Start(){
 		man = GameObject.FindWithTag ("Manager").GetComponent<Manager> () as Manager;
