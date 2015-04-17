@@ -57,7 +57,7 @@ public class Manager : MonoBehaviour {
 				}
 				else{
 					if(color != -1 && count >= matches.Peek().reqNumber)	//if chain was long enough, take care of it
-						lineComplete(matches);
+						StartCoroutine("lineComplete",matches);
 					matches = new Queue<Gem>();								//if different, reinitializes
 					matches.Enqueue(grid[i,j]);
 					count = 1;
@@ -67,30 +67,28 @@ public class Manager : MonoBehaviour {
 		}
 	}
 
-	public void lineComplete(Queue<Gem> matches){							//in this case, removes the line
+	public IEnumerator lineComplete(Queue<Gem> matches){							//in this case, removes the line
 		foreach(Gem a in matches){
+			yield return new WaitForSeconds(.2f);
 			a.GetComponent<SpriteRenderer>().enabled = false;
 			a.color = -2;
 		}
 	}
 
 	private float distance(Gem a, Gem b){ //returns 1 if pieces are adjacent, including diagonals as adjacent
-		return Mathf.Max (Mathf.Abs(a.transform.position.x - b.transform.position.x),
-		                  Mathf.Abs (a.transform.position.y - b.transform.position.y));
+		return Mathf.Max (Mathf.Abs(a.x - b.x),
+		                  Mathf.Abs (a.y - b.y));
 	}
 
 	private void Swap(Gem a, Gem b){	//simple swaps between all the fields, with temp variables
-		Gem temp3 = grid [a.x, a.y];
+		Gem temp = grid [a.x, a.y];
 		grid [a.x, a.y] = grid [b.x, b.y];
-		grid [b.x, b.y] = temp3;
+		grid [b.x, b.y] = temp;
 		int temp2 = a.x;
 		a.x = b.x;
 		b.x = temp2;
 		temp2 = a.y;
 		a.y = b.y;
 		b.y = temp2;
-		Vector2 temp = a.transform.position;
-		a.transform.position = b.transform.position;
-		b.transform.position = temp;
 	}
 }

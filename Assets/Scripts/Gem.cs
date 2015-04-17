@@ -13,8 +13,8 @@ public class Gem : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-
+	void Update () { //sets new position to progressively closer to destination, makes a smooth transition
+		transform.position += (new Vector3 ((x - transform.position.x) * .2f, (y - transform.position.y) * .2f, 0));
 	}
 
 	public bool sameType(Gem other){
