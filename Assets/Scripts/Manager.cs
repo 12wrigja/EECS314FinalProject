@@ -19,7 +19,6 @@ public class Manager : MonoBehaviour {
 				Gem gem = gems[index];								//picks a random item
 				grid[i,j] = Instantiate(gem);						//makes it
 				grid[i,j].transform.position = new Vector2(i, j);	//positions
-				grid[i,j].color = index;							//sets its ID field
 				grid[i,j].x = i;									//location fields
 				grid[i,j].y = j;
 			}
@@ -35,33 +34,39 @@ public class Manager : MonoBehaviour {
 	public void clicked(Gem select){
 		if (!selected) { //if this was first selected
 			selected = select;
+			select.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+			select.transform.position = new Vector3(select.transform.position.x, select.transform.position.y, -1);
 		}
 		else { //there was a previously selected
 			if(distance(selected, select) == 1){		//if within swap range, swaps and checks for matches
 				Swap(select, selected);
 				checkMatches();
+				Debug.Log ("end");
 			}
+			selected.transform.localScale = new Vector3(1, 1, 1);
+			select.transform.position = new Vector3(select.transform.position.x, select.transform.position.y, 1);
 			selected = null;
 		}
 	}
 
-	public void checkMatches(){//only checks horizontal, as intructions won't be vertical
-		int color = -1;														//initialization
-		int count = 0;														
-		Queue<Gem> matches = new Queue<Gem> ();
+	public void checkMatches(){//only checks horizontal, as intructions won't be vertical														
+		int count;																//initialization				
+		Queue<Gem> matches;
 		for (int j = 0; j < width; j++) {
 			for(int i = 0; i < height; i++){
-				if(color == grid[i,j].color){								//keeps track of same color in a row
-					count++;
+				if(grid[i,j] is Op && grid[i,j]){ //if its the operation
+					count = 0;
+					matches = new Queue<Gem> ();
 					matches.Enqueue(grid[i,j]);
-				}
-				else{
-					if(color != -1 && count >= matches.Peek().reqNumber)	//if chain was long enough, take care of it
-						StartCoroutine("lineComplete",matches);
-					matches = new Queue<Gem>();								//if different, reinitializes
-					matches.Enqueue(grid[i,j]);
-					count = 1;
-					color = grid[i,j].color;
+					for(int k = 1; k <= grid[i,j].inputs.Length; k++){ //runs through the next gems that could be inputs
+						if(i + k < width && grid[i + k, j].type != null && grid[i + k, j].type.Equals(grid[i,j].inputs[k - 1])){
+							count++; //if its the correct inputs, increment
+							matches.Enqueue(grid[i + k, j]);
+						}
+					}
+					if(count >= grid[i,j].inputs.Length) //if all inputs are correctly filled, complete the line
+						StartCoroutine("lineComplete", matches);
+					Debug.Log (count);
 				}
 			}
 		}
@@ -71,7 +76,7 @@ public class Manager : MonoBehaviour {
 		foreach(Gem a in matches){
 			yield return new WaitForSeconds(.2f);
 			a.GetComponent<SpriteRenderer>().enabled = false;
-			a.color = -2;
+			a.type = null;
 		}
 	}
 
