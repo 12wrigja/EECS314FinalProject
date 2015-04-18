@@ -12,8 +12,13 @@ Write back (WB),  where the processor writes the result to a register after oper
 We create sequences of instructions to feed to the processor.
 We assemble the instruction in an order called "pipelining."
 We start by feeding the processor the first part of the first instruction.
-Then, we feed him the second part of the first instruction AND the first part of the second instruction.
-But there's a problem. See this instruction sequence?
+Then, we feed him the second part of the first instruction AND the first part of the...
+...second instruction. But there's a problem. See this instruction sequence?
 In instruction #2, we do math in the register $t0.
 But, if it's the same register we read from in the DEC step of instruction #3...
 we get a hazard.
+This is called a data hazard.
+We try to use data from a register that doesn't have the correct value yet.
+To fix this, we use a technique called data forwarding.
+Drag and drop the component below to forward the data from...
+...the EXE stage of instruction #2 to the EXE stage of instruction #3.

@@ -29,7 +29,7 @@ public class TextReader : MonoBehaviour {
 	}
 	
 	void Update () {
-		if (!stopReading && numItr > 18) {
+		if (!stopReading && numItr > 23) {
 			stopReading = true;
 		}
 		if(Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr < 5){
@@ -45,7 +45,7 @@ public class TextReader : MonoBehaviour {
 			GetComponent<AudioSource>().PlayOneShot(donutAppear, 0.1f); //Plays donut appear sound for each donut.
 			numItr++;
 		}
-		if (Input.GetKeyDown (KeyCode.Space) && !stopReading && (numItr >= 10 && numItr <= 18) ) {
+		if (Input.GetKeyDown (KeyCode.Space) && !stopReading && (numItr >= 10 && numItr <= 23) ) {
 			nextLine = reader.ReadLine();
 			tutorialText.text = nextLine;
 			GetComponent<AudioSource>().PlayOneShot(buttonClip, 2.5f);// Plays beep noise.
@@ -61,5 +61,8 @@ public class TextReader : MonoBehaviour {
 			GetComponent<AudioSource>().PlayOneShot(donutAppear, 0.1f); //Plays donut appear sound.
 			numItr++;
 		}
+		if(Input.GetKey(KeyCode.Space) && !stopReading && numItr == 19){
+			handler.DisplayHazard (1, 2, 2, 1);
+		}		
 	}
 }
