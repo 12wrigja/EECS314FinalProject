@@ -20,5 +20,5 @@ we get a hazard.
 This is called a data hazard.
 We try to use data from a register that doesn't have the correct value yet.
 To fix this, we use a technique called data forwarding.
-Drag and drop the component below to forward the data from...
+Tap each stage to forward the data from...
 ...the EXE stage of instruction #2 to the EXE stage of instruction #3.

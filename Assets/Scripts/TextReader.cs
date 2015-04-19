@@ -12,6 +12,7 @@ public class TextReader : MonoBehaviour {
 
 	public Text tutorialText;
 	public Image[] donuts;
+	public Image arrow;
 
 	public AudioClip buttonClip;
 	public AudioClip donutAppear;
@@ -20,6 +21,9 @@ public class TextReader : MonoBehaviour {
 	private string nextLine;
 	private StreamReader reader;
 	private bool stopReading;
+
+	private bool clicked1;
+	private bool clicked2; // Bools for demo hazard resolutions.
 
 	void Start () {
 		reader = new StreamReader (scriptAddress);
@@ -63,6 +67,10 @@ public class TextReader : MonoBehaviour {
 		}
 		if(Input.GetKey(KeyCode.Space) && !stopReading && numItr == 19){
 			handler.DisplayHazard (1, 2, 2, 1);
-		}		
+		}
+		if (Input.GetKey(KeyCode.Space) && !stopReading && numItr == 24) {
+			arrow.gameObject.SetActive(true);
+			handler.ResolveHazard (1, 2, 2, 1);
+		}
 	}
 }
