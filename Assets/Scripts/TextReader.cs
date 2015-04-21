@@ -12,7 +12,11 @@ public class TextReader : MonoBehaviour {
 
 	public Text tutorialText;
 	public Image[] donuts;
+
+	// Represents a temporary toolbox.
 	public Image arrow;
+	public Image predictor;
+	public Image hardware;
 
 	public AudioClip buttonClip;
 	public AudioClip donutAppear;
@@ -85,9 +89,11 @@ public class TextReader : MonoBehaviour {
 			handler.DisplayHazard (1, 2, 2, 1);
 		}
 		if (Input.GetKey(KeyCode.Space) && !stopReading && numItr == 36) {
+			predictor.gameObject.SetActive(true);
 			handler.ResolveHazard (1, 2, 2, 1);
 		}
 		if (Input.GetKey(KeyCode.Space) && !stopReading && numItr == 37) {
+			predictor.gameObject.SetActive (false);
 			handler.ClearAllInstructions();
 		}
 		if(Input.GetKey(KeyCode.Space) && !stopReading && numItr == 39){
@@ -99,9 +105,11 @@ public class TextReader : MonoBehaviour {
 			handler.DisplayHazard (1, 2, 2, 1);
 		}
 		if (Input.GetKey(KeyCode.Space) && !stopReading && numItr == 44) {
+			hardware.gameObject.SetActive(true);
 			handler.ResolveHazard (1, 2, 2, 1);
 		}
 		if (Input.GetKey (KeyCode.Space) && !stopReading && numItr == 47) {
+			hardware.gameObject.SetActive(false);
 			handler.ClearAllInstructions();
 		}
 	}
