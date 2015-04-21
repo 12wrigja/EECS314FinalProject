@@ -11,16 +11,16 @@ public class InstructionHandler : MonoBehaviour {
 	public Color fadeTo;
 	public Color fadeFrom;
 
-	private static int orderInScene = 0;
-	private List<Image[]> sceneInstructions;
+	private Image[][] orderedInstructions;
+	private int arrayCounter;
 
 	void Start(){
-		sceneInstructions = new List<Image[]>();
+		orderedInstructions = new Image[3][];
+		arrayCounter = 0;
 	}
 
 	public void GenerateInstruction(Vector3 position, Vector3 scale){
 		Image[] donutInstances = new Image[5];
-		sceneInstructions.Add(donutInstances);
 		for (int i = 0; i < 5; i++) {
 			donutInstances[i] = Instantiate(donuts[i]) as Image;
 			donutInstances[i].transform.position = new Vector3(position.x + (i * 70), position.y, position.z);
@@ -28,12 +28,12 @@ public class InstructionHandler : MonoBehaviour {
 			donutInstances[i].transform.SetParent(canvas.transform, false);
 			donutInstances[i].gameObject.SetActive(true);
 		}
-		orderInScene++;
+		orderedInstructions [arrayCounter] = donutInstances;
+		arrayCounter++;
 	}
 
 	// Turns instructions red upon hazard detection.
 	public void DisplayHazard(int firstInstruction, int secondInstruction, int donutNum1, int donutNum2){
-		Image[][] orderedInstructions = sceneInstructions.ToArray ();
 		Image[] firstArray = orderedInstructions [firstInstruction];
 		Image[] secondArray = orderedInstructions [secondInstruction];
 		firstArray [donutNum1].CrossFadeColor (fadeTo, 1f, false, false);
@@ -41,7 +41,6 @@ public class InstructionHandler : MonoBehaviour {
 	}
 	// Turns instructions green upon hazard resolution.
 	public void ResolveHazard(int firstInstruction, int secondInstruction, int donutNum1, int donutNum2){
-		Image[][] orderedInstructions = sceneInstructions.ToArray ();
 		Image[] firstArray = orderedInstructions [firstInstruction];
 		Image[] secondArray = orderedInstructions [secondInstruction];
 		firstArray [donutNum1].CrossFadeColor (fadeFrom, 1f, false, false);
@@ -55,12 +54,13 @@ public class InstructionHandler : MonoBehaviour {
 
 	// Clears screen of all instructions.
 	public void ClearAllInstructions(){
-		Image[][] orderedInstructions = sceneInstructions.ToArray ();
-		for(int i = 0; i < orderedInstructions.GetLength(0); i++){
-			for(int j = 0; j < 5; j++){
-				Destroy(orderedInstructions[i][j].gameObject);
+		for (int i = 0; i < arrayCounter; i++) {
+			for (int j = 0; j < 5; j++) {
+				Destroy (orderedInstructions[i][j].gameObject);
+				orderedInstructions [i] [j] = null;
 			}
+			orderedInstructions [i] = null;
 		}
-		orderInScene = 0;
+		arrayCounter = 0;
 	}
 }
