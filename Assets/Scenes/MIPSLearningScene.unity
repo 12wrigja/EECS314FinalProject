@@ -518,7 +518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc9298f56c71184ebe6b783c5dd2508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  validOpCodes: 0000000001000000
+  validOpCodes: 00000000010000000200000003000000
   opcodepanel: {fileID: 311068621}
   allowedRegisters: 00000000010000000d000000
   registerPanel: {fileID: 1945701401}

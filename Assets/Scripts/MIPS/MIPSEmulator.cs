@@ -69,6 +69,13 @@ public class MIPSEmulator
             case OpcodeRepository.OPCODE.ADDI:
                 SetRegister((Register)inst.op1, InterpretValue(inst.op2) + InterpretValue(inst.op3));
                 break;
+            case OpcodeRepository.OPCODE.SUB:
+                SetRegister((Register)inst.op1, InterpretValue(inst.op2) - InterpretValue(inst.op3) );
+                break;
+            case OpcodeRepository.OPCODE.AND:
+            case OpcodeRepository.OPCODE.ANDI:
+                SetRegister((Register)inst.op1, InterpretValue(inst.op2) & InterpretValue(inst.op3));
+                break;
             default:
                 Debug.Log("Op" + inst.op1.toString() + "Not implemented yet");
                 break;
@@ -85,7 +92,6 @@ public class MIPSEmulator
         {
             return int.Parse(op.toString());
         }
-        return -1;
     }
 
     private int GetRegisterValue(Register op)
@@ -111,7 +117,14 @@ public class MIPSEmulator
         FieldInfo reg = emType.GetField(op.ToFieldString());
         if (reg != null && reg.GetValue(this) is int)
         {
-            reg.SetValue(this, value);
+            if (op.ToFieldString().Equals("ZERO"))
+            {
+
+            }
+            else
+            {
+                reg.SetValue(this, value);
+            }
         }
         else
         {
