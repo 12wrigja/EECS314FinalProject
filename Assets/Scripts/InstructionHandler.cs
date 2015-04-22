@@ -20,7 +20,9 @@ public class InstructionHandler : MonoBehaviour {
 	}
 
 	public void GenerateInstruction(Vector3 position, Vector3 scale){
+
 		Image[] donutInstances = new Image[5];
+
 		for (int i = 0; i < 5; i++) {
 			donutInstances[i] = Instantiate(donuts[i]) as Image;
 			donutInstances[i].transform.position = new Vector3(position.x + (i * 70), position.y, position.z);
@@ -57,10 +59,9 @@ public class InstructionHandler : MonoBehaviour {
 		for (int i = 0; i < arrayCounter; i++) {
 			for (int j = 0; j < 5; j++) {
 				Destroy (orderedInstructions[i][j].gameObject);
-				orderedInstructions [i] [j] = null;
 			}
-			orderedInstructions [i] = null;
 		}
+		orderedInstructions = new Image[3][];
 		arrayCounter = 0;
 	}
 }

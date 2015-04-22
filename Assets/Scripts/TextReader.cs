@@ -69,46 +69,46 @@ public class TextReader : MonoBehaviour {
 			GetComponent<AudioSource>().PlayOneShot(donutAppear, 0.1f); //Plays donut appear sound.
 			numItr++;
 		}
-		if(Input.GetKey(KeyCode.Space) && !stopReading && numItr == 19){
+		if(Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 19){
 			handler.DisplayHazard (1, 2, 2, 1);
 		}
-		if (Input.GetKey(KeyCode.Space) && !stopReading && numItr == 24) {
+		if (Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 24) {
 			arrow.gameObject.SetActive(true);
 			handler.ResolveHazard (1, 2, 2, 1);
 		}
-		if (Input.GetKey(KeyCode.Space) && !stopReading && numItr == 26) {
+		if (Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 25) {
 			arrow.gameObject.SetActive(false);
 			handler.ClearAllInstructions();
 		}
-		if (Input.GetKey(KeyCode.Space) && !stopReading && numItr == 27) {
+		if (Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 27) {
 			handler.GenerateInstruction(new Vector3(-170f, 120f, 0), new Vector3(0.5f, 0.5f, 0.5f));
 			handler.GenerateInstruction(new Vector3(-100f, 50f, 0), new Vector3(0.5f, 0.5f, 0.5f));
 			handler.GenerateInstruction(new Vector3(-30f, -20f, 0), new Vector3(0.5f, 0.5f, 0.5f));
 		}
-		if(Input.GetKey(KeyCode.Space) && !stopReading && numItr == 28){
+		if(Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 28){
 			handler.DisplayHazard (1, 2, 2, 1);
 		}
-		if (Input.GetKey(KeyCode.Space) && !stopReading && numItr == 36) {
+		if (Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 36) {
 			predictor.gameObject.SetActive(true);
 			handler.ResolveHazard (1, 2, 2, 1);
 		}
-		if (Input.GetKey(KeyCode.Space) && !stopReading && numItr == 37) {
+		if (Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 37) {
 			predictor.gameObject.SetActive (false);
 			handler.ClearAllInstructions();
 		}
-		if(Input.GetKey(KeyCode.Space) && !stopReading && numItr == 39){
+		if(Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 39){
 			handler.GenerateInstruction(new Vector3(-170f, 120f, 0), new Vector3(0.5f, 0.5f, 0.5f));
 			handler.GenerateInstruction(new Vector3(-100f, 50f, 0), new Vector3(0.5f, 0.5f, 0.5f));
 			handler.GenerateInstruction(new Vector3(-30f, -20f, 0), new Vector3(0.5f, 0.5f, 0.5f));
 		}
-		if(Input.GetKey(KeyCode.Space) && !stopReading && numItr == 41){
+		if(Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 41){
 			handler.DisplayHazard (1, 2, 2, 1);
 		}
-		if (Input.GetKey(KeyCode.Space) && !stopReading && numItr == 44) {
+		if (Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 44) {
 			hardware.gameObject.SetActive(true);
 			handler.ResolveHazard (1, 2, 2, 1);
 		}
-		if (Input.GetKey (KeyCode.Space) && !stopReading && numItr == 47) {
+		if (Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 47) {
 			hardware.gameObject.SetActive(false);
 			handler.ClearAllInstructions();
 		}
