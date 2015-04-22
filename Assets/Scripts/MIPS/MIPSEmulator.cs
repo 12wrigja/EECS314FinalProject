@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 
 public class MIPSEmulator : MonoBehaviour
 {
@@ -46,7 +48,7 @@ public class MIPSEmulator : MonoBehaviour
         this.correctState = answer;
     }
 
-    public void executeProgram(IList<Instruction> program)
+    public void ExecuteProgram(IList<Instruction> program)
     {
         bytecode = program;
         pc = 0;
@@ -54,23 +56,65 @@ public class MIPSEmulator : MonoBehaviour
         while (pc < bytecode.Count)
         {
             pc++;
-            runInstruction(bytecode[pc -1]);
+            RunInstruction(bytecode[pc -1]);
             
         }
     }
 
-    public void runInstruction(Instruction inst)
+    private void RunInstruction(Instruction inst)
     {
-        
+        switch (inst.code)
+        {
+            case OpcodeRepository.OPCODE.ADD:
+            case OpcodeRepository.OPCODE.ADDI:
+                SetRegister((Register)inst.op1, InterpretValue(inst.op2) + InterpretValue(inst.op3));
+                break;
+            default:
+                Debug.Log("Op" + inst.op1.toString() + "Not implemented yet");
+                break;
+        }
     }
 
-    /*// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}*/
+    private int InterpretValue(Operand op)
+    {
+        if (op is Register)
+        {
+            return GetRegisterValue((Register)op);
+        }
+        else
+        {
+            return int.Parse(op.toString());
+        }
+        return -1;
+    }
+
+    private int GetRegisterValue(Register op)
+    {
+        Type emType = typeof(MIPSEmulator);
+        FieldInfo reg = emType.GetField(op.ToFieldString());
+        if (reg != null && reg.GetValue(this) is int)
+        {
+            return (int)reg.GetValue(this);
+        }
+        else
+        {
+            Debug.Log("Error getting register Value");
+        }
+
+        return -1;
+    }
+
+    private void SetRegister(Register op, int value)
+    {
+        Type emType = typeof(MIPSEmulator);
+        FieldInfo reg = emType.GetField(op.ToFieldString());
+        if (reg != null && reg.GetValue(this) is int)
+        {
+            reg.SetValue(this, value);
+        }
+        else
+        {
+            Debug.Log("Error setting register value");
+        }
+    }
 }

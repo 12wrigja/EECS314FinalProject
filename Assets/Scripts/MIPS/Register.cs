@@ -33,4 +33,9 @@ public class Register : Operand {
     {
         return "$"+reg.ToString();
     }
+
+    public string ToFieldString()
+    {
+        return reg.ToString();
+    }
 }
