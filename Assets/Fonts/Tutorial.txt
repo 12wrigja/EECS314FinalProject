@@ -8,6 +8,7 @@ Fetch (FETCH), the initial memory read.
 Decode (DEC), where the processor selects what register to operate on.
 Execute (EXE), where the processor's arithmetic logic unit performs mathematical operations.
 Memory write (MEM), where the memory is written to after operations.
+
 Write back (WB),  where the processor writes the result to a register after operations.
 We create sequences of instructions to feed to the processor.
 We assemble the instruction in an order called "pipelining."
@@ -29,10 +30,6 @@ To fix this, we use branch prediction.
 This means that we guess whether we will branch or not...
 ...based on our most recent branch decision.
 The most common branch prediction scheme uses a two-bit branch predictor.
-It looks like this:
-
-But in the bakery, it looks like this:
-
 Touch the red pipeline stages to apply a two-bit branch predictor to the hazard.
 Voila! Hazard resolved.
 We don't run into the last type of hazard in the MIPS pipeline very often...

@@ -37,7 +37,7 @@ public class TextReader : MonoBehaviour {
 	}
 	
 	void Update () {
-		if (!stopReading && numItr > 50) {
+		if (!stopReading && numItr > 47) {
 			stopReading = true;
 		}
 		if(Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr < 5){
@@ -47,19 +47,19 @@ public class TextReader : MonoBehaviour {
 			numItr++;
 		}
 		if (Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr >= 5 && numItr < 10) { // Makes donuts appear on fifth tap.
-			nextLine = reader.ReadLine();
-			tutorialText.text = nextLine;
 			donuts[numItr - 5].gameObject.SetActive(true);
 			GetComponent<AudioSource>().PlayOneShot(donutAppear, 0.1f); //Plays donut appear sound for each donut.
+			nextLine = reader.ReadLine();
+			tutorialText.text = nextLine;
 			numItr++;
 		}
-		if (Input.GetKeyDown (KeyCode.Space) && !stopReading && (numItr >= 10 && numItr <= 50) ) {
+		if (Input.GetKeyDown (KeyCode.Space) && !stopReading && (numItr >= 10 && numItr <= 47) ) {
 			nextLine = reader.ReadLine();
 			tutorialText.text = nextLine;
 			GetComponent<AudioSource>().PlayOneShot(buttonClip, 2.5f);// Plays beep noise.
 			numItr++;
 		}
-		if (Input.GetKeyDown (KeyCode.Space) && !stopReading && numItr == 16) {
+		if (Input.GetKeyDown (KeyCode.Space) && !stopReading && numItr == 17) {
 			for(int i = 0; i < 5; i++){
 				donuts[i].gameObject.SetActive(false);
 			}
@@ -69,46 +69,46 @@ public class TextReader : MonoBehaviour {
 			GetComponent<AudioSource>().PlayOneShot(donutAppear, 0.1f); //Plays donut appear sound.
 			numItr++;
 		}
-		if(Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 19){
+		if(Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 20){
 			handler.DisplayHazard (1, 2, 2, 1);
 		}
-		if (Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 24) {
+		if (Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 25) {
 			arrow.gameObject.SetActive(true);
 			handler.ResolveHazard (1, 2, 2, 1);
 		}
-		if (Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 25) {
+		if (Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 26) {
 			arrow.gameObject.SetActive(false);
 			handler.ClearAllInstructions();
 		}
-		if (Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 27) {
+		if (Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 28) {
 			handler.GenerateInstruction(new Vector3(-170f, 120f, 0), new Vector3(0.5f, 0.5f, 0.5f));
 			handler.GenerateInstruction(new Vector3(-100f, 50f, 0), new Vector3(0.5f, 0.5f, 0.5f));
 			handler.GenerateInstruction(new Vector3(-30f, -20f, 0), new Vector3(0.5f, 0.5f, 0.5f));
 		}
-		if(Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 28){
+		if(Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 29){
 			handler.DisplayHazard (1, 2, 2, 1);
 		}
-		if (Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 36) {
+		if (Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 34) {
 			predictor.gameObject.SetActive(true);
 			handler.ResolveHazard (1, 2, 2, 1);
 		}
-		if (Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 37) {
+		if (Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 35) {
 			predictor.gameObject.SetActive (false);
 			handler.ClearAllInstructions();
 		}
-		if(Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 39){
+		if(Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 37){
 			handler.GenerateInstruction(new Vector3(-170f, 120f, 0), new Vector3(0.5f, 0.5f, 0.5f));
 			handler.GenerateInstruction(new Vector3(-100f, 50f, 0), new Vector3(0.5f, 0.5f, 0.5f));
 			handler.GenerateInstruction(new Vector3(-30f, -20f, 0), new Vector3(0.5f, 0.5f, 0.5f));
 		}
-		if(Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 41){
+		if(Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 39){
 			handler.DisplayHazard (1, 2, 2, 1);
 		}
-		if (Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 44) {
+		if (Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 42) {
 			hardware.gameObject.SetActive(true);
 			handler.ResolveHazard (1, 2, 2, 1);
 		}
-		if (Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 47) {
+		if (Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 45) {
 			hardware.gameObject.SetActive(false);
 			handler.ClearAllInstructions();
 		}
