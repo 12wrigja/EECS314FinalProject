@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 
-public class MIPSEmulator : MonoBehaviour
+public class MIPSEmulator
 {
 
     private IList<Instruction> bytecode;
@@ -13,33 +13,33 @@ public class MIPSEmulator : MonoBehaviour
 
     private static readonly int ZERO = 0;
 
-    private int A0 = 0;
+    public int A0 = 1;
 
-    private int A1 = 0;
+    public int A1 = 0;
 
-    private int A2 = 0;
+    public int A2 = 0;
 
-    private int A3 = 0;
+    public int A3 = 0;
 
-    private int T0 = 0;
+    public int T0 = 0;
 
-    private int T1 = 0;
+    public int T1 = 0;
 
-    private int T2 = 0;
+    public int T2 = 0;
 
-    private int T3 = 0;
+    public int T3 = 0;
 
-    private int T4 = 0;
+    public int T4 = 0;
 
-    private int T5 = 0;
+    public int T5 = 0;
 
-    private int T6 = 0;
+    public int T6 = 0;
 
-    private int T7 = 0;
+    public int T7 = 0;
 
-    private int V0 = 0;
+    public int V0 = 0;
 
-    private int V1 = 0;
+    public int V1 = 0;
 
     private string correctState;
 
@@ -91,7 +91,8 @@ public class MIPSEmulator : MonoBehaviour
     private int GetRegisterValue(Register op)
     {
         Type emType = typeof(MIPSEmulator);
-        FieldInfo reg = emType.GetField(op.ToFieldString());
+        string registring = op.ToFieldString();
+        FieldInfo reg = emType.GetField(registring);
         if (reg != null && reg.GetValue(this) is int)
         {
             return (int)reg.GetValue(this);
