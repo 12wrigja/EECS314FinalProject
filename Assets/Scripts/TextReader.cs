@@ -6,7 +6,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(AudioSource))]
 public class TextReader : MonoBehaviour {
 
-	public string scriptAddress;
+	public string scriptName;
 
 	public InstructionHandler handler;
 
@@ -35,7 +35,9 @@ public class TextReader : MonoBehaviour {
 	private bool clicked2; // Bools for demo hazard resolutions.
 
 	void Start () {
-		reader = new StreamReader (scriptAddress);
+        TextAsset script = Resources.Load(scriptName) as TextAsset;
+        Stream s = new MemoryStream(script.bytes);
+		reader = new StreamReader (s);
 		nextLine = reader.ReadLine ();
 		tutorialText.text = nextLine;
 		stopReading = false;

@@ -299,12 +299,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
---- !u!224 &173382182
+--- !u!224 &173382182 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22488338, guid: 303a75cd6dffa0f48805ddc8da8124be,
     type: 2}
   m_PrefabInternal: {fileID: 2042169395}
---- !u!114 &173382183
+--- !u!114 &173382183 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11469732, guid: 303a75cd6dffa0f48805ddc8da8124be,
     type: 2}
@@ -499,12 +499,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
---- !u!224 &413461274
+--- !u!224 &413461274 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22444530, guid: 0b139acf3f893d745b9cf2987a1b19a5,
     type: 2}
   m_PrefabInternal: {fileID: 2105502526}
---- !u!114 &413461275
+--- !u!114 &413461275 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11466066, guid: 0b139acf3f893d745b9cf2987a1b19a5,
     type: 2}
@@ -778,23 +778,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 872258364}
---- !u!224 &990553968
+--- !u!224 &990553968 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22499294, guid: ba4d24ca8b1f80341beea00f5a979f40,
     type: 2}
   m_PrefabInternal: {fileID: 561078345}
---- !u!114 &990553969
+--- !u!114 &990553969 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11499362, guid: ba4d24ca8b1f80341beea00f5a979f40,
     type: 2}
   m_PrefabInternal: {fileID: 561078345}
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
---- !u!224 &1059652772
+--- !u!224 &1059652772 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22443782, guid: d7149e6c098e1af43bff6b4f34d86d5d,
     type: 2}
   m_PrefabInternal: {fileID: 2132392565}
---- !u!114 &1059652773
+--- !u!114 &1059652773 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11470710, guid: d7149e6c098e1af43bff6b4f34d86d5d,
     type: 2}
@@ -1297,7 +1297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 062cdea6ec673504bb3bd8ac12686767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scriptAddress: C:\Users\Haley\Documents\GitHub\EECS314FinalProject\Assets\Fonts\Tutorial.txt
+  scriptName: Tutorial
   handler: {fileID: 48658294}
   tutorialText: {fileID: 872258366}
   donuts:
@@ -1609,12 +1609,12 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!224 &1890604711
+--- !u!224 &1890604711 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22406042, guid: bb73ae56e6bc96a4286a72dec02879e8,
     type: 2}
   m_PrefabInternal: {fileID: 1345015269}
---- !u!114 &1890604712
+--- !u!114 &1890604712 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11472336, guid: bb73ae56e6bc96a4286a72dec02879e8,
     type: 2}
