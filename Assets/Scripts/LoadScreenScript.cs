@@ -15,7 +15,7 @@ public class LoadScreenScript : MonoBehaviour {
 				for(int j = 0; j < 120; j++){
 				}
 			}
-			Application.LoadLevel(1); // Loads tutorial. EDIT: Will eventually load selection screen.
+			Application.LoadLevel("Tutorial"); // Loads tutorial. EDIT: Will eventually load selection screen.
 		}
 	}
 }
