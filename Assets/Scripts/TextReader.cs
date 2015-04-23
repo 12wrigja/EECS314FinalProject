@@ -44,6 +44,9 @@ public class TextReader : MonoBehaviour {
 	}
 	
 	void Update () {
+		if (stopReading && Input.GetKeyDown (KeyCode.Space)) {
+			Application.LoadLevel("MainScene");
+		}
 		if (!stopReading && numItr > 47) {
 			stopReading = true;
 		}
