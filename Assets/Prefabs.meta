@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: 5ea642060c9cd094a989fbba4c7664df
+folderAsset: yes
+timeCreated: 1428112206
+=======
 guid: de2d4c4f1a495bf4e901be40afe3696f
 folderAsset: yes
 timeCreated: 1427657692
+>>>>>>> origin/Pipeline-Bakery
 licenseType: Free
 DefaultImporter:
   userData: 
