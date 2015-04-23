@@ -76,6 +76,16 @@ public class MIPSEmulator
             case OpcodeRepository.OPCODE.ANDI:
                 SetRegister((Register)inst.op1, InterpretValue(inst.op2) & InterpretValue(inst.op3));
                 break;
+            case OpcodeRepository.OPCODE.OR:
+            case OpcodeRepository.OPCODE.ORI:
+                SetRegister((Register)inst.op1, InterpretValue(inst.op2) | InterpretValue(inst.op3));
+                break;
+            case OpcodeRepository.OPCODE.SLL:
+                SetRegister((Register)inst.op1, InterpretValue(inst.op2) << 1);
+                break;
+            case OpcodeRepository.OPCODE.SRL:
+                SetRegister((Register)inst.op1, InterpretValue(inst.op2) >> 1);
+                break;
             default:
                 Debug.Log("Op" + inst.op1.toString() + "Not implemented yet");
                 break;
