@@ -94,12 +94,10 @@ public class TextReader : MonoBehaviour {
 			text2.gameObject.SetActive(true);
 		}
 		if(Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 29){
-			handler.DisplayHazard (1, 2, 2, 1);
 		}
 		if (Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 34) {
 			predictor.gameObject.SetActive(true);
 			predictor2.gameObject.SetActive(true);
-			handler.ResolveHazard (1, 2, 2, 1);
 		}
 		if (Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 35) {
 			predictor.gameObject.SetActive (false);
