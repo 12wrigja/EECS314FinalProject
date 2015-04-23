@@ -21,8 +21,8 @@ we get a hazard.
 This is called a data hazard.
 We try to use data from a register that doesn't have the correct value yet.
 To fix this, we use a technique called data forwarding.
-Tap each stage to forward the data from...
-...the EXE stage of instruction #2 to the EXE stage of instruction #3.
+As you can see, when we forward the data from the EXE stage of instruction #2...
+...to the EXE stage of instruction #3, the hazard is resolved.
 Great. Now, let's look at another instruction set.
 In this set, we branch based on whether or not the value in $t2 is zero.
 However, we haven't determined the value of $t2 yet.
@@ -30,15 +30,15 @@ To fix this, we use branch prediction.
 This means that we guess whether we will branch or not...
 ...based on our most recent branch decision.
 The most common branch prediction scheme uses a two-bit branch predictor.
-Touch the red pipeline stages to apply a two-bit branch predictor to the hazard.
+When we apply a two-bit branch predictor to the hazard...
 Voila! Hazard resolved.
-We don't run into the last type of hazard in the MIPS pipeline very often...
+We don't run into the last type of hazard in the MIPS pipeline...
 but here in the Pipeline Bakery, we can be short of resources.
 Let's say we have the instruction sequence above.
-The second and third instructions try to access the main memory at the same time.
+The first and third instructions try to access the main memory at the same time.
 But only one instruction can access the memory at any given time.
 We fix this by simply adding more hardware.
-Touch the red pipeline stages to add the appropriate hardware to resolve the hazard.
+Now, we add the appropriate hardware to resolve the hazard.
 Very good. We've covered all of the different hazard categories now.
 Of course, there are different ways to handle these hazards, but we'll discuss...
 ...that when the time comes.

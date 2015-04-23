@@ -16,7 +16,12 @@ public class TextReader : MonoBehaviour {
 	// Represents a temporary toolbox.
 	public Image arrow;
 	public Image predictor;
+	public Image predictor2;
 	public Image hardware;
+
+	public Text text1;
+	public Text text2;
+	public Text text3;
 
 	public AudioClip buttonClip;
 	public AudioClip donutAppear;
@@ -67,6 +72,7 @@ public class TextReader : MonoBehaviour {
 			handler.GenerateInstruction(new Vector3(-100f, 50f, 0), new Vector3(0.5f, 0.5f, 0.5f));
 			handler.GenerateInstruction(new Vector3(-30f, -20f, 0), new Vector3(0.5f, 0.5f, 0.5f));
 			GetComponent<AudioSource>().PlayOneShot(donutAppear, 0.1f); //Plays donut appear sound.
+			text1.gameObject.SetActive(true);
 			numItr++;
 		}
 		if(Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 20){
@@ -78,38 +84,45 @@ public class TextReader : MonoBehaviour {
 		}
 		if (Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 26) {
 			arrow.gameObject.SetActive(false);
+			text1.gameObject.SetActive(false);
 			handler.ClearAllInstructions();
 		}
 		if (Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 28) {
 			handler.GenerateInstruction(new Vector3(-170f, 120f, 0), new Vector3(0.5f, 0.5f, 0.5f));
 			handler.GenerateInstruction(new Vector3(-100f, 50f, 0), new Vector3(0.5f, 0.5f, 0.5f));
 			handler.GenerateInstruction(new Vector3(-30f, -20f, 0), new Vector3(0.5f, 0.5f, 0.5f));
+			text2.gameObject.SetActive(true);
 		}
 		if(Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 29){
 			handler.DisplayHazard (1, 2, 2, 1);
 		}
 		if (Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 34) {
 			predictor.gameObject.SetActive(true);
+			predictor2.gameObject.SetActive(true);
 			handler.ResolveHazard (1, 2, 2, 1);
 		}
 		if (Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 35) {
 			predictor.gameObject.SetActive (false);
+			predictor2.gameObject.SetActive(false);
+			text2.gameObject.SetActive(false);
 			handler.ClearAllInstructions();
 		}
 		if(Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 37){
 			handler.GenerateInstruction(new Vector3(-170f, 120f, 0), new Vector3(0.5f, 0.5f, 0.5f));
 			handler.GenerateInstruction(new Vector3(-100f, 50f, 0), new Vector3(0.5f, 0.5f, 0.5f));
 			handler.GenerateInstruction(new Vector3(-30f, -20f, 0), new Vector3(0.5f, 0.5f, 0.5f));
+			text3.gameObject.SetActive(true);
 		}
 		if(Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 39){
-			handler.DisplayHazard (1, 2, 2, 1);
+			handler.DisplayHazard (0, 2, 3, 1);
 		}
 		if (Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 42) {
 			hardware.gameObject.SetActive(true);
-			handler.ResolveHazard (1, 2, 2, 1);
+			handler.ResolveHazard (0, 2, 3, 1);
 		}
 		if (Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr == 45) {
 			hardware.gameObject.SetActive(false);
+			text3.gameObject.SetActive(false);
 			handler.ClearAllInstructions();
 		}
 	}
