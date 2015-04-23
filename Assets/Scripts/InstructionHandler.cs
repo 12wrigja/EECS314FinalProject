@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class InstructionHandler : MonoBehaviour {
 
 	// Generates instructions, removes instructions, illustrates hazards and hazard resolution.
-	public Donut[] donuts;
+	public Image[] donuts;
 	public Canvas canvas;
 	public Color fadeTo;
 	public Color fadeFrom;
@@ -21,10 +21,10 @@ public class InstructionHandler : MonoBehaviour {
 
 	public void GenerateInstruction(Vector3 position, Vector3 scale){
 
-		Donut[] donutInstances = new Donut[5];
+		Image[] donutInstances = new Image[5];
 
 		for (int i = 0; i < 5; i++) {
-			donutInstances[i] = Instantiate(donuts[i]) as Donut;
+			donutInstances[i] = Instantiate(donuts[i]) as Image;
 			donutInstances[i].transform.position = new Vector3(position.x + (i * 70), position.y, position.z);
 			donutInstances[i].transform.localScale = scale;
 			donutInstances[i].transform.SetParent(canvas.transform, false);
