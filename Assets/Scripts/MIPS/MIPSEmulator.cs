@@ -11,7 +11,7 @@ public class MIPSEmulator
 
     private int pc;
 
-    private static readonly int ZERO = 0;
+    public static readonly int ZERO = 0;
 
     public int A0 = 1;
 
@@ -81,10 +81,12 @@ public class MIPSEmulator
                 SetRegister((Register)inst.op1, InterpretValue(inst.op2) | InterpretValue(inst.op3));
                 break;
             case OpcodeRepository.OPCODE.SLL:
-                SetRegister((Register)inst.op1, InterpretValue(inst.op2) << 1);
+                Debug.Log(InterpretValue(inst.op2));
+                Debug.Log(InterpretValue(inst.op3));
+                SetRegister((Register)inst.op1, InterpretValue(inst.op2) << InterpretValue(inst.op3));
                 break;
             case OpcodeRepository.OPCODE.SRL:
-                SetRegister((Register)inst.op1, InterpretValue(inst.op2) >> 1);
+                SetRegister((Register)inst.op1, InterpretValue(inst.op2) >> InterpretValue(inst.op3));
                 break;
             default:
                 Debug.Log("Op" + inst.op1.toString() + "Not implemented yet");

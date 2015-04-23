@@ -489,8 +489,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afcc128cefe56e644aa8fc63c3001bf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  confirmBox: {fileID: 1591406011}
   RunButton: {fileID: 1586637832}
   codeContainer: {fileID: 1094971624}
+--- !u!114 &1591406011
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11409658, guid: c0deb13fbb4468f43931566180951a99,
+    type: 2}
+  m_PrefabInternal: {fileID: 118618218}
+  m_Script: {fileID: 11500000, guid: c58f856e0ac739b4a98222277d33f458, type: 3}
 --- !u!1 &1618142404
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,9 +525,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc9298f56c71184ebe6b783c5dd2508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  validOpCodes: 00000000010000000200000003000000
+  validOpCodes: 000000000100000002000000030000000a0000000b0000000c0000000d000000
   opcodepanel: {fileID: 311068621}
-  allowedRegisters: 00000000010000000d000000
+  allowedRegisters: 00000000010000000200000003000000040000000d000000
   registerPanel: {fileID: 1945701401}
   allowedLabels:
   - loop
