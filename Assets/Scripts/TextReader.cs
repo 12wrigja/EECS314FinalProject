@@ -50,6 +50,10 @@ public class TextReader : MonoBehaviour {
 		if (!stopReading && numItr > 47) {
 			stopReading = true;
 		}
+        if (stopReading)
+        {
+            Application.LoadLevel("MainScene");
+        }
 		if(Input.GetKeyDown(KeyCode.Space) && !stopReading && numItr < 5){
 			nextLine = reader.ReadLine();
 			tutorialText.text = nextLine;

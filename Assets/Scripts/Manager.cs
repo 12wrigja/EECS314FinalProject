@@ -3,14 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Manager : MonoBehaviour {
-
+	
 	public static int width = 8;
 	public static int height = 8;
 	public Gem[] gems;
 	private Gem[,] grid;
-
+	
 	private Gem selected = null;
-
+	
 	void Start(){
 		grid = new Gem[width,height];
 		for (int i = 0; i < height; i++) {
@@ -25,12 +25,12 @@ public class Manager : MonoBehaviour {
 		}
 		checkMatches();												//gets rid of any starting matches
 	}
-
+	
 	// Update is called once per frame
 	void Update () {
-
+		
 	}
-
+	
 	public void clicked(Gem select){
 		if (!selected) { //if this was first selected
 			selected = select;
@@ -48,7 +48,7 @@ public class Manager : MonoBehaviour {
 			selected = null;
 		}
 	}
-
+	
 	public void checkMatches(){//only checks horizontal, as intructions won't be vertical														
 		int count;																//initialization				
 		Queue<Gem> matches;
@@ -71,20 +71,48 @@ public class Manager : MonoBehaviour {
 			}
 		}
 	}
-
+	
 	public IEnumerator lineComplete(Queue<Gem> matches){							//in this case, removes the line
 		foreach(Gem a in matches){
 			yield return new WaitForSeconds(.2f);
 			a.GetComponent<SpriteRenderer>().enabled = false;
+			grid[a.x, a.y] = new Nop();
+			grid[a.x, a.y].x = a.x;
+			grid[a.x, a.y].y = a.y;
+			a.x = -1;
+			a.y = -1;
 			a.type = null;
 		}
+		dropLines();
 	}
-
-	private float distance(Gem a, Gem b){ //returns 1 if pieces are adjacent, including diagonals as adjacent
+	
+	public void dropLines()
+	{
+		for (int i = 0; i < height; i++)
+		{
+			for (int j = 0; j < width; j++)
+			{
+				if (grid[j, i] is Nop)
+				{
+					for (int tempHeight = i + 1; tempHeight < height; tempHeight++)
+					{
+						if (grid[j, tempHeight] != null)
+						{
+							Swap (grid[j,i], grid[j, tempHeight]);
+						}
+					}
+				}
+			}
+		}
+		checkMatches();
+	}
+	
+	private float distance(Gem a, Gem b)
+	{ //returns 1 if pieces are adjacent, including diagonals as adjacent
 		return Mathf.Max (Mathf.Abs(a.x - b.x),
 		                  Mathf.Abs (a.y - b.y));
 	}
-
+	
 	private void Swap(Gem a, Gem b){	//simple swaps between all the fields, with temp variables
 		Gem temp = grid [a.x, a.y];
 		grid [a.x, a.y] = grid [b.x, b.y];
