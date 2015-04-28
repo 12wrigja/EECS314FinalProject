@@ -145,7 +145,7 @@ Camera:
     height: 1
   near clip plane: .300000012
   far clip plane: 1000
-  field of view: 110
+  field of view: 108
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -166,7 +166,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 37427645}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.62920685e-07}
-  m_LocalPosition: {x: .50999999, y: -.0900000036, z: 1}
+  m_LocalPosition: {x: .280000001, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -926,6 +926,7 @@ GameObject:
   - 4: {fileID: 1352554158}
   - 212: {fileID: 1352554159}
   - 95: {fileID: 1352554160}
+  - 114: {fileID: 1352554161}
   m_Layer: 0
   m_Name: baker_0
   m_TagString: Untagged
@@ -988,6 +989,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &1352554161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1352554157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87e0e893a5a16504a839b314ad5651f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1384631077
 GameObject:
   m_ObjectHideFlags: 0
