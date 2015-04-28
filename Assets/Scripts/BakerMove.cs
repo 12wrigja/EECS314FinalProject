@@ -8,7 +8,7 @@ public class BakerMove : MonoBehaviour {
 	private Vector3 aVector;
 	private Vector3 sVector;
 	private Vector3 dVector;
-	private string prev;
+	private static string prev = "toIdle";
 
 	void Start () {
 		anim = GetComponent<Animator> ();
@@ -16,7 +16,6 @@ public class BakerMove : MonoBehaviour {
 		aVector = new Vector3 (1, 0, 0);
 		sVector = new Vector3 (0, -1, 0);
 		dVector = new Vector3 (-1, 0, 0);
-		prev = "toIdle";
 	}
 	
 	void Update () {
@@ -38,17 +37,21 @@ public class BakerMove : MonoBehaviour {
 		}
 		if(Input.GetButton("Down")){
 			anim.SetBool(prev, false);
+			Debug.Log (prev);
 			anim.SetBool("moveForward", true);
 			prev = "moveForward";
+			Debug.Log (prev);
 			transform.position += Time.deltaTime * sVector;
 		}
 		if(Input.GetButton("Right")){
 			anim.SetBool(prev, false);
+			Debug.Log(prev);
 			anim.SetBool("moveRight", true);
 			prev = "moveRight";
+			Debug.Log(prev);
 			transform.position += Time.deltaTime * dVector;
 		}
-		else{
+		if(!Input.GetButton("Right") && !Input.GetButton("Down") && ! Input.GetButton("Left") && !Input.GetButton("Up")){
 			anim.SetBool(prev, false);
 			anim.SetBool("toIdle", true);
 			prev = "toIdle";
