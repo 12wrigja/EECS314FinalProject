@@ -17,3 +17,7 @@
 sysinfo.txt
 Assets/UnityVS/
 Assets/UnityVS.meta
+
+ProjectReport/*.synctex.gz
+ProjectReport/*.log
+ProjectReport/*.aux
