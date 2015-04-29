@@ -15,12 +15,13 @@
 	There were a couple of challenges we ran up against while developing this set of games.
 	% Put some major challenges we ran up against here. Format is \item <PUT TEXT HERE>
 	\begin{enumerate}
-		\item Item 1
+		\item Item 1 User interface design in Unity. Unity recently switched to using a new user interface system, and setting up all of the click interactions within MIPS simulator was non-trivial in the new system, requiring nesting function definitions within functions. Also, setting up a system to let the various operands know what types they can accept was a challenge as it essentially involved keeping lists of which slots would accept various operand types, and then forcing them to correctly highlight.
 		\item 
 	\end{enumerate}
 	\section{Key Components}
 	Our project has three key components which come together to make the MIPS learning process easier. We have the MIPS Simulator, which is a graphical MIPS simulator in the style of ALICE for Java, we have MIPS Bejeweled, a twist on the classic Bejeweled game which helps teach people how MIPS instructions work, and we have the Pipeline Bakery which presents the MIPS pipeline in a fun, graphical way.
 	\subsection{MIPS Simulator}
+	The MIPS Simulator allows the user to use an intuiative user interface to create a sequence of instructions and view the results of those instructions. You start by adding new instructions via the instructions panel and then filling in the operands using the various operand kind panels. Operands will only let you place themselves in valid instruction positions to help reduce the amount of error that can occur.
 	\subsection{MIPS Bejeweled}
 	MIPS Bejeweled takes the classic bejeweled game and adds the twist of only completing rows when those rows create a valid MIPS instruction. In order to make this work we needed to remove the requirement in Bejeweled of reversing a move if it doesn't make a valid combination because with the added complexity of MIPS instructions the game was impossible to play. We feel that this is an acceptable compromise in the name of usability. We also changed out the typical falling physics of classic Bejeweled for a swapping mechanism that encourages the player to think ahead.
 	\subsection{Pipeline Bakery}
@@ -48,8 +49,8 @@
 		\subitem Bejeweled Base Implementation
 		\subitem Bejeweled Instruction Logic
 		\item Joe Satterfield
-		\subitem MIPS Learner Co-Implementation
+		\subitem MIPS Learner Simulator Back-End Implementer
 		\item James Wright
-		\subitem MIPS Learner Co-Implementation
+		\subitem MIPS Learner User Interface Desgin and Implementer
 	\end{itemize}
 \end{document}
