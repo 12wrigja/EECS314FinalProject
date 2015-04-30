@@ -15,7 +15,7 @@
 	There were a couple of challenges we ran up against while developing this set of games.
 	% Put some major challenges we ran up against here. Format is \item <PUT TEXT HERE>
 	\begin{enumerate}
-		\item Item 1 User interface design in Unity. Unity recently switched to using a new user interface system, and setting up all of the click interactions within MIPS simulator was non-trivial in the new system, requiring nesting function definitions within functions. Also, setting up a system to let the various operands know what types they can accept was a challenge as it essentially involved keeping lists of which slots would accept various operand types, and then forcing them to correctly highlight.
+		\item User interface design in Unity. Unity recently switched to using a new user interface system, and setting up all of the click interactions within MIPS simulator was non-trivial in the new system, requiring nesting function definitions within functions. Also, setting up a system to let the various operands know what types they can accept was a challenge as it essentially involved keeping lists of which slots would accept various operand types, and then forcing them to correctly highlight.
 		\item 
 	\end{enumerate}
 	\section{Key Components}
@@ -26,7 +26,9 @@
 	MIPS Bejeweled takes the classic bejeweled game and adds the twist of only completing rows when those rows create a valid MIPS instruction. In order to make this work we needed to remove the requirement in Bejeweled of reversing a move if it doesn't make a valid combination because with the added complexity of MIPS instructions the game was impossible to play. We feel that this is an acceptable compromise in the name of usability. We also changed out the typical falling physics of classic Bejeweled for a swapping mechanism that encourages the player to think ahead.
 	\subsection{Pipeline Bakery}
 	\section{Integration}
+	Integration of the different projects was fairly straightforward. Since they were designed modularly, all we needed was a higher-level menu which would allow navigation to each of the different Unity "scenes" and then a menu button in each of the scenes to navigate back to the menu.
 	\section{User Interface}
+	The user interface for the different components is relatively straightforward. The menu is just three buttons, which take you to any of the projects.
 	\section{Snapshots}
 	\includegraphics[height=8cm]{MainMenu.png}\\
 	\includegraphics[height=6cm]{MIPSBejeweled.png}
