@@ -25,6 +25,7 @@
 	\subsection{MIPS Bejeweled}
 	MIPS Bejeweled takes the classic bejeweled game and adds the twist of only completing rows when those rows create a valid MIPS instruction. In order to make this work we needed to remove the requirement in Bejeweled of reversing a move if it doesn't make a valid combination, because with the added complexity of MIPS instructions the game was impossible to play. We feel that this is an acceptable compromise in the name of usability. We also changed out the typical falling physics of classic Bejeweled for a swapping mechanism that encourages the player to think ahead.
 	\subsection{Pipeline Bakery}
+	Pipeline Bakery is designed to be a simple, entertaining introduction to the MIPS pipeline. The game includes a tutorial which guides the player through the different stages of an instruction, the construction of the MIPS pipeline, and the different pipeline hazards computer architects run into. The game portion of Pipeline Bakery is designed to quiz users on their knowledge of pipeline hazards. The game includes hardware hazards which are not found in the MIPS pipeline, but we wanted to illustrate all of the most common issues that computer architects run into when designing a pipeline. 
 	\section{Integration}
 	The integration of the three games was relatively simple. Each game was made seperately and then merged with GitHub into one folder. James went through and resolved any file conflicts in that arose from the merge. When together, each game takes place in what Unity calls a scene, including the main game-select screen. When the player selects a game to play, the scene of the desired game is loaded up, and the user plays it as normal. To go back, each game has another button that returns the user to the game-select screen.
 	\section{User Interface}
@@ -33,6 +34,7 @@
 	\subsection{MIPS Bejeweled}
 	The UI for this was quite basic. Each gem has an input or an OP on it, and is colored according to what type it is. Blue is registers, yellow is a register with a shift, orange is an immediate value, red is an operation, and green is a jump address. The values on the pieces has no bearing on the game, but is just there as an example of what these values might look like in MIPS code. The first selected piece becomes larger than the others, indicating it has been selected and can be swapped with any adjacent piece.
 	\subsection{Pipeline Bakery}
+	The Pipeline Bakery UI is very straightforward. The tutorial is a touch-to-proceed format, and the game itself follows a similar control scheme. The donuts represent instruction stages. When a hazard appears, the donuts are highlighted red, and when the user resolves the hazard, the donuts are highlighted green. Instructions are displayed next to rows of donuts to give the user hazard type clues.
 	\section{Snapshots}
 	\includegraphics[height=8cm]{MainMenu.png}\\
 	\includegraphics[height=6cm]{MIPSBejeweled.png}
