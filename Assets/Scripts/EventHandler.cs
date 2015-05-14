@@ -8,6 +8,8 @@ public class EventHandler : MonoBehaviour {
 
 	void Start () {
 		handler.GenerateInstruction (new Vector3 (-325f, -20f, -20f), new Vector3 (0.4f, 0.4f, 0.4f));
+		handler.GenerateInstruction (new Vector3 (-325f, -20f, -20f), new Vector3 (0.4f, 0.4f, 0.4f));
+		handler.GenerateInstruction (new Vector3 (-325f, -20f, -20f), new Vector3 (0.4f, 0.4f, 0.4f));
 	}
 	
 	void Update () {
