@@ -11,13 +11,9 @@ public class InstructionHandler : MonoBehaviour {
 	public Color fadeTo;
 	public Color fadeFrom;
 
-	private Image[][] orderedInstructions;
-	private int arrayCounter;
+	private Image[][] orderedInstructions = new Image[3][]{null, null, null};
 
-	void Start(){
-		orderedInstructions = new Image[3][];
-		arrayCounter = 0;
-	}
+	private int arrayCounter = 0;
 
 	public void GenerateInstruction(Vector3 position, Vector3 scale){
 
