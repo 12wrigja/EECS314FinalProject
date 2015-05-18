@@ -48,18 +48,20 @@ public class TextGenerator : MonoBehaviour {
 	}
 
 	private string GenerateInstruction(){
-		int instructionType = Random.Range (0, 2);
+		int instructionType = Random.Range (0, 3);
 		string[][] options;
 		string instruction;
 		if (instructionType == 0) {
 			options = arithmeticOptions;
-			instruction = DetermineArithmeticInstruction(options);
+			instruction = DetermineArithmeticInstruction (options);
 		} else if (instructionType == 1) {
 			options = memoryOptions;
-			instruction = DetermineMemoryInstruction(options);
-		} else {
+			instruction = DetermineMemoryInstruction (options);
+		} else if (instructionType == 2) {
 			options = branchOptions;
-			instruction = DetermineBranchInstruction(options);
+			instruction = DetermineBranchInstruction (options);
+		} else {
+			instruction = null;
 		}
 		return instruction;
 	}
@@ -88,5 +90,9 @@ public class TextGenerator : MonoBehaviour {
 		string part4 = options [3] [Random.Range (0, 2)];
 		string composite = part1 + " " + part2 + ", " + part3 + ", " + part4;
 		return composite;
+	}
+
+	private string DetermineHazards(){
+		return null;
 	}
 }
