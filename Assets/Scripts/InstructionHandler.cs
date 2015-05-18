@@ -8,6 +8,10 @@ public class InstructionHandler : MonoBehaviour {
 	// Generates instructions, removes instructions, illustrates hazards and hazard resolution.
 	public Image[] donuts;
 	public Canvas canvas;
+	public Text[] text;
+
+	public TextGenerator generator;
+
 	public Color fadeTo;
 	public Color fadeFrom;
 
@@ -27,6 +31,10 @@ public class InstructionHandler : MonoBehaviour {
 			donutInstances[i].gameObject.SetActive(true);
 		}
 		orderedInstructions [arrayCounter] = donutInstances;
+
+		text [arrayCounter].gameObject.GetComponent<Text> ().text = generator.GenerateText();
+		text[arrayCounter].gameObject.SetActive (true);
+
 		arrayCounter++;
 	}
 
